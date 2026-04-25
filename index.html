@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KZDI Hub — Kimiyyar Zahiri Digital Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Syne', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+            arabic: ['Noto Sans Arabic', 'sans-serif'],
+          },
+          colors: {
+            navy: { 950: '#0a0f1e', 900: '#0d1b2a', 800: '#112236', 700: '#162d47' },
+            electric: { 600: '#1e6fff', 500: '#3a86ff', 400: '#6aa3ff', 300: '#90c8ff' },
+            gold: { 500: '#e8a020', 400: '#f0b840', 300: '#f5cc70' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --navy-950: #0a0f1e;
+      --navy-900: #0d1b2a;
+      --electric: #1e6fff;
+      --steel: #3a86ff;
+      --light-blue: #90c8ff;
+      --gold: #e8a020;
+      --off-white: #f0f4ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--navy-950);
+      color: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    /* Islamic geometric octagon SVG pattern */
+    .geo-bg {
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233a86ff' stroke-opacity='0.06' stroke-width='1'%3E%3Cpolygon points='40,8 56,16 64,32 64,48 56,64 40,72 24,64 16,48 16,32 24,16'/%3E%3Cpolygon points='40,18 52,24 58,36 58,52 52,60 40,66 28,60 22,52 22,36 28,24'/%3E%3Cline x1='40' y1='8' x2='40' y2='18'/%3E%3Cline x1='56' y1='16' x2='52' y2='24'/%3E%3Cline x1='64' y1='32' x2='58' y2='36'/%3E%3Cline x1='64' y1='48' x2='58' y2='52'/%3E%3Cline x1='56' y1='64' x2='52' y2='60'/%3E%3Cline x1='40' y1='72' x2='40' y2='66'/%3E%3Cline x1='24' y1='64' x2='28' y2='60'/%3E%3Cline x1='16' y1='48' x2='22' y2='52'/%3E%3Cline x1='16' y1='32' x2='22' y2='36'/%3E%3Cline x1='24' y1='16' x2='28' y2='24'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .glass {
+      background: rgba(13, 27, 42, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(58, 134, 255, 0.15);
+    }
+
+    .glass-light {
+      background: rgba(30, 111, 255, 0.08);
+      border: 1px solid rgba(58, 134, 255, 0.2);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--light-blue) 0%, var(--steel) 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .glow-btn {
+      background: linear-gradient(135deg, var(--electric), var(--steel));
+      box-shadow: 0 0 24px rgba(30, 111, 255, 0.4);
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .glow-btn:hover { box-shadow: 0 0 40px rgba(30, 111, 255, 0.6); transform: translateY(-2px); }
+
+    .gold-btn {
+      background: linear-gradient(135deg, var(--gold), #f0b840);
+      color: var(--navy-950);
+      box-shadow: 0 0 20px rgba(232, 160, 32, 0.3);
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .gold-btn:hover { box-shadow: 0 0 36px rgba(232, 160, 32, 0.5); transform: translateY(-2px); }
+
+    .card-hover {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(30, 111, 255, 0.15);
+    }
+
+    /* Telegram chat bubbles */
+    .tg-bubble {
+      background: rgba(58, 134, 255, 0.15);
+      border: 1px solid rgba(58, 134, 255, 0.25);
+      border-radius: 16px 16px 16px 4px;
+      padding: 10px 14px;
+      max-width: 85%;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+    .tg-bubble-out {
+      background: rgba(30, 111, 255, 0.25);
+      border: 1px solid rgba(30, 111, 255, 0.4);
+      border-radius: 16px 16px 4px 16px;
+      margin-left: auto;
+    }
+    .tg-bubble-time { font-size: 0.6rem; opacity: 0.5; margin-top: 4px; text-align: right; }
+
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes pulse-slow { 0%,100%{opacity:0.4} 50%{opacity:0.8} }
+    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes slideUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
+    .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+    .animate-spin-slow-rev { animation: spin-slow 28s linear infinite reverse; }
+    .slide-up { animation: slideUp 0.7s ease both; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    nav { background: rgba(10, 15, 30, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(58, 134, 255, 0.1); }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy-950); }
+    ::-webkit-scrollbar-thumb { background: var(--electric); border-radius: 3px; }
+
+    .stat-num { font-family: 'DM Mono', monospace; }
+
+    .mosaic { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+    @media(max-width:768px) { .mosaic { grid-template-columns:1fr; } }
+
+    table tr { border-bottom: 1px solid rgba(58,134,255,0.08); }
+    table tr:hover { background: rgba(58,134,255,0.05); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-18 py-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center border border-electric-500/40 glass-light">
+            <span class="font-bold text-gold-500 text-lg" style="font-family:'DM Mono',monospace">KZ</span>
+          </div>
+          <div>
+            <div class="font-bold text-off-white leading-tight">KZDI Hub</div>
+            <div class="text-xs text-electric-300 font-arabic">كيمية الظاهري</div>
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#solutions" class="text-sm text-blue-200 hover:text-white transition-colors">Solutions</a>
+          <a href="#value" class="text-sm text-blue-200 hover:text-white transition-colors">Why KZDI</a>
+          <a href="#advantage" class="text-sm text-blue-200 hover:text-white transition-colors">Our Edge</a>
+          <a href="#ecosystem" class="text-sm text-blue-200 hover:text-white transition-colors">Ecosystem</a>
+        </div>
+
+        <a href="https://t.me/KzMentorBot" target="_blank" rel="noopener"
+           class="glow-btn text-white px-5 py-2.5 rounded-full text-sm font-semibold flex items-center space-x-2 group">
+          <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          <span>Open Telegram Bot</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center justify-center pt-20 geo-bg overflow-hidden">
+    <!-- BG orbs -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-16 left-8 w-80 h-80 rounded-full blur-3xl animate-pulse-slow" style="background:rgba(30,111,255,0.12)"></div>
+      <div class="absolute bottom-16 right-8 w-96 h-96 rounded-full blur-3xl animate-pulse-slow" style="background:rgba(232,160,32,0.08);animation-delay:2s"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-electric-500/10 animate-spin-slow"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-gold-500/10 animate-spin-slow-rev"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <!-- Left copy -->
+        <div class="space-y-8 slide-up">
+          <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full text-sm">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+            <span class="text-electric-300">Nigeria's First Hausa-English Bilingual AI Hub</span>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl font-bold leading-tight">
+            <span class="block" style="color:var(--off-white)">Digital Intelligence</span>
+            <span class="block gradient-text mt-1">Built for Arewa</span>
+          </h1>
+
+          <p class="text-lg text-blue-200 max-w-lg leading-relaxed">
+            AI and Web3 education delivered in Hausa, on Telegram, designed for the culturally grounded, first-generation tech learner in Northern Nigeria.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="https://t.me/KzMentorBot" target="_blank" rel="noopener"
+               class="glow-btn text-white px-8 py-4 rounded-full font-semibold flex items-center space-x-3 group">
+              <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform"></i>
+              <span>Start Learning on Telegram</span>
+            </a>
+            <a href="https://kzdi-tech.vercel.app" target="_blank" rel="noopener"
+               class="glass text-white px-8 py-4 rounded-full font-semibold flex items-center space-x-2 hover:border-electric-500/40 transition-colors">
+              <i data-lucide="globe" class="w-5 h-5"></i>
+              <span>Visit Platform</span>
+            </a>
+          </div>
+
+          <div class="flex items-center space-x-5 pt-2">
+            <div class="flex -space-x-3">
+              <div class="w-9 h-9 rounded-full glass-light border border-electric-500/30 flex items-center justify-center text-xs font-bold text-electric-300">AB</div>
+              <div class="w-9 h-9 rounded-full glass-light border border-gold-500/30 flex items-center justify-center text-xs font-bold text-gold-400">MK</div>
+              <div class="w-9 h-9 rounded-full glass-light border border-electric-300/30 flex items-center justify-center text-xs font-bold text-blue-200">ZH</div>
+              <div class="w-9 h-9 rounded-full glass border border-electric-500/30 flex items-center justify-center text-xs font-bold text-electric-300">+2k</div>
+            </div>
+            <p class="text-sm text-blue-200">Trusted by <span class="font-bold text-white">2,000+</span> Arewa youth</p>
+          </div>
+        </div>
+
+        <!-- Telegram Bot Mockup -->
+        <div class="relative flex justify-center slide-up" style="animation-delay:0.2s">
+          <div class="relative w-72">
+            <!-- Phone frame -->
+            <div class="rounded-[2.5rem] p-3 border-4 border-navy-700" style="background:#111827;box-shadow:0 30px 80px rgba(30,111,255,0.25)">
+              <div class="rounded-[2rem] overflow-hidden" style="background:#17212b;height:580px;display:flex;flex-direction:column">
+
+                <!-- Telegram Header -->
+                <div class="flex items-center space-x-3 px-4 py-3" style="background:#232e3c;border-bottom:1px solid rgba(58,134,255,0.1)">
+                  <div class="w-9 h-9 rounded-full glass-light flex items-center justify-center">
+                    <i data-lucide="bot" class="w-5 h-5 text-electric-400"></i>
+                  </div>
+                  <div class="flex-1">
+                    <div class="text-sm font-semibold text-white">@KzMentorBot</div>
+                    <div class="text-xs text-green-400 flex items-center space-x-1">
+                      <span class="w-1.5 h-1.5 bg-green-400 rounded-full inline-block"></span>
+                      <span>online</span>
+                    </div>
+                  </div>
+                  <i data-lucide="more-vertical" class="w-4 h-4 text-blue-300 opacity-60"></i>
+                </div>
+
+                <!-- Chat -->
+                <div class="flex-1 px-3 py-4 space-y-3 overflow-hidden">
+                  <div class="tg-bubble text-blue-100">
+                    <p>Sannu! Ina son koyo game da AI amma ban san inda zan fara ba.</p>
+                    <div class="tg-bubble-time">09:41</div>
+                  </div>
+
+                  <div class="tg-bubble tg-bubble-out text-white">
+                    <p class="text-electric-300 text-xs font-semibold mb-1">🤖 KzMentorBot</p>
+                    <p>Sannu da zuwa! 🌟 Zan taimaka maka mataki-mataki. Mu fara da "Menene AI?" — a Hausa ko Turanci?</p>
+                    <div class="flex gap-2 mt-2 flex-wrap">
+                      <span class="glass-light px-2 py-1 rounded-full text-xs text-electric-300 cursor-pointer">Hausa ✓</span>
+                      <span class="glass-light px-2 py-1 rounded-full text-xs text-blue-200 cursor-pointer">English</span>
+                    </div>
+                    <div class="tg-bubble-time">09:41 ✓✓</div>
+                  </div>
+
+                  <div class="tg-bubble text-blue-100">
+                    <p>Hausa please!</p>
+                    <div class="tg-bubble-time">09:42</div>
+                  </div>
+
+                  <div class="tg-bubble tg-bubble-out text-white">
+                    <p class="text-electric-300 text-xs font-semibold mb-1">🤖 KzMentorBot</p>
+                    <p>AI (Artificial Intelligence) na kama da hankali na mutum — amma yana aiki ta hanyar kwamfuta. Ka yi tunanin Google Maps...</p>
+                    <div class="tg-bubble-time">09:42 ✓✓</div>
+                  </div>
+
+                  <div class="tg-bubble text-blue-100">
+                    <p>Ai yanzu na fahimta! Ku ci gaba 🙏</p>
+                    <div class="tg-bubble-time">09:43</div>
+                  </div>
+                </div>
+
+                <!-- Input -->
+                <div class="px-3 py-2 flex items-center space-x-2" style="background:#232e3c;border-top:1px solid rgba(58,134,255,0.1)">
+                  <div class="flex-1 rounded-full px-3 py-1.5 text-xs text-blue-400" style="background:#17212b">Type a message...</div>
+                  <div class="w-8 h-8 glow-btn rounded-full flex items-center justify-center">
+                    <i data-lucide="send" class="w-3.5 h-3.5 text-white"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -right-6 glass px-4 py-3 rounded-2xl animate-float shadow-xl">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:rgba(30,111,255,0.2)">
+                  <i data-lucide="zap" class="w-4 h-4 text-electric-400"></i>
+                </div>
+                <div>
+                  <div class="font-bold text-white text-xs">24/7 Active</div>
+                  <div class="text-blue-300" style="font-size:0.6rem">No app download</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <i data-lucide="chevron-down" class="w-6 h-6 text-electric-400 opacity-60"></i>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="py-14 relative overflow-hidden" style="background:var(--navy-900);border-top:1px solid rgba(58,134,255,0.1);border-bottom:1px solid rgba(58,134,255,0.1)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="reveal">
+          <div class="text-4xl md:text-5xl font-bold text-gold-400 stat-num" data-target="2000">0+</div>
+          <div class="text-blue-300 mt-2 text-xs uppercase tracking-widest">Youth Reached</div>
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
+          <div class="text-4xl md:text-5xl font-bold text-gold-400 stat-num">24/7</div>
+          <div class="text-blue-300 mt-2 text-xs uppercase tracking-widest">Always On</div>
+        </div>
+        <div class="reveal" style="transition-delay:0.2s">
+          <div class="text-4xl md:text-5xl font-bold text-gold-400 stat-num">100%</div>
+          <div class="text-blue-300 mt-2 text-xs uppercase tracking-widest">Hausa-First</div>
+        </div>
+        <div class="reveal" style="transition-delay:0.3s">
+          <div class="text-4xl md:text-5xl font-bold text-gold-400 stat-num">0</div>
+          <div class="text-blue-300 mt-2 text-xs uppercase tracking-widest">App Downloads</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions" class="py-24 geo-bg relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+        <span class="text-electric-400 font-semibold text-xs uppercase tracking-widest font-mono">Our Solutions</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6" style="color:var(--off-white)">Infrastructure for Digital Inclusion</h2>
+        <p class="text-lg text-blue-200">We don't just teach tech. We build the complete ecosystem for Arewa youth to enter the digital economy with confidence and cultural integrity.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-3xl p-8 card-hover reveal group">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 glow-btn group-hover:scale-110 transition-transform">
+            <i data-lucide="bot" class="w-7 h-7 text-white"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">AI Mentor Bot</h3>
+          <p class="text-blue-200 text-sm mb-6 leading-relaxed">Your personal learning assistant available 24/7 on Telegram. Explains complex concepts with local examples and adapts to your pace — fully in Hausa.</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric-400 flex-shrink-0"></i><span>Natural Hausa conversation</span></li>
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric-400 flex-shrink-0"></i><span>Step-by-step guided learning</span></li>
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-electric-400 flex-shrink-0"></i><span>Works on any phone with Telegram</span></li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-3xl p-8 card-hover reveal group" style="transition-delay:0.15s">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform" style="background:linear-gradient(135deg,var(--gold),#f0b840);box-shadow:0 0 20px rgba(232,160,32,0.3)">
+            <i data-lucide="book-open" class="w-7 h-7 text-navy-950"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Structured Curriculum</h3>
+          <p class="text-blue-200 text-sm mb-6 leading-relaxed">Bite-sized modules optimized for low bandwidth. From AI basics to Web3 fundamentals, each lesson uses Northern Nigerian contexts and Islamic finance principles.</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-400 flex-shrink-0"></i><span>Islamic Finance awareness built-in</span></li>
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-400 flex-shrink-0"></i><span>Riba, Gharar &amp; Maysir risk flags</span></li>
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-gold-400 flex-shrink-0"></i><span>Shariah-compliant alternatives</span></li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-3xl p-8 card-hover reveal group" style="transition-delay:0.3s">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform" style="background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 0 20px rgba(16,185,129,0.3)">
+            <i data-lucide="users" class="w-7 h-7 text-white"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Community &amp; Pipeline</h3>
+          <p class="text-blue-200 text-sm mb-6 leading-relaxed">Beyond education — connecting learners to opportunities. Entrepreneurship pipeline, peer networks, and pathways from learning to earning.</p>
+          <ul class="space-y-2.5">
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 flex-shrink-0"></i><span>Peer learning communities</span></li>
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 flex-shrink-0"></i><span>Entrepreneurship support</span></li>
+            <li class="flex items-center space-x-2 text-sm text-blue-100"><i data-lucide="check-circle-2" class="w-4 h-4 text-green-400 flex-shrink-0"></i><span>Job &amp; gig connections</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION -->
+  <section id="value" class="py-24 relative" style="background:var(--navy-900)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <div class="reveal">
+          <span class="text-electric-400 font-semibold text-xs uppercase tracking-widest font-mono">Value Proposition</span>
+          <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-10" style="color:var(--off-white)">Why Arewa Youth Choose KZDI</h2>
+
+          <div class="space-y-4">
+            <div class="glass p-5 rounded-2xl flex items-start space-x-4 card-hover group cursor-pointer">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 glow-btn group-hover:scale-110 transition-transform">
+                <i data-lucide="languages" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-bold mb-1">Hausa-First Delivery</h4>
+                <p class="text-blue-200 text-sm">The only platform building structured AI education in Hausa. Learn complex tech concepts in the language you think in.</p>
+              </div>
+            </div>
+
+            <div class="glass p-5 rounded-2xl flex items-start space-x-4 card-hover group cursor-pointer" style="transition-delay:0.05s">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);box-shadow:0 0 16px rgba(124,58,237,0.3)">
+                <i data-lucide="send" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-bold mb-1">Telegram-Native Access</h4>
+                <p class="text-blue-200 text-sm">No app download beyond what's already installed. No English prerequisite. No cultural misalignment. Just message @KzMentorBot and learn.</p>
+              </div>
+            </div>
+
+            <div class="glass p-5 rounded-2xl flex items-start space-x-4 card-hover group cursor-pointer" style="transition-delay:0.1s">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 gold-btn group-hover:scale-110 transition-transform">
+                <i data-lucide="shield-check" class="w-5 h-5 text-navy-950"></i>
+              </div>
+              <div>
+                <h4 class="font-bold mb-1">Islamic Finance Aware</h4>
+                <p class="text-blue-200 text-sm">Every Web3 and fintech module flags Riba, Gharar, and Maysir risks. Shariah-compliant alternatives provided — something no mainstream EdTech does.</p>
+              </div>
+            </div>
+
+            <div class="glass p-5 rounded-2xl flex items-start space-x-4 card-hover group cursor-pointer" style="transition-delay:0.15s">
+              <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform" style="background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 0 16px rgba(16,185,129,0.3)">
+                <i data-lucide="network" class="w-5 h-5 text-white"></i>
+              </div>
+              <div>
+                <h4 class="font-bold mb-1">Ecosystem Approach</h4>
+                <p class="text-blue-200 text-sm">Not just a course — infrastructure. Platform + bot + content + community + entrepreneurship pipeline for generational impact.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey Card -->
+        <div class="reveal" style="transition-delay:0.2s">
+          <div class="glass rounded-3xl p-8">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <h3 class="font-bold text-lg" style="color:var(--off-white)">Learning Path Impact</h3>
+                <p class="text-sm text-blue-300">Typical user journey — 6 months</p>
+              </div>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:rgba(16,185,129,0.15)">
+                <i data-lucide="trending-up" class="w-5 h-5 text-green-400"></i>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="flex items-center space-x-4">
+                <div class="w-11 h-11 glow-btn rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0">1</div>
+                <div class="flex-1 glass-light rounded-xl p-3.5">
+                  <div class="font-semibold text-sm">Discovery</div>
+                  <div class="text-xs text-blue-300">Join via Telegram, zero friction</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-sm text-navy-950 flex-shrink-0 gold-btn">2</div>
+                <div class="flex-1 glass-light rounded-xl p-3.5">
+                  <div class="font-semibold text-sm">Foundation</div>
+                  <div class="text-xs text-blue-300">AI &amp; digital literacy in Hausa</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0" style="background:linear-gradient(135deg,#7c3aed,#6d28d9)">3</div>
+                <div class="flex-1 glass-light rounded-xl p-3.5">
+                  <div class="font-semibold text-sm">Specialization</div>
+                  <div class="text-xs text-blue-300">Web3, fintech, or AI tools</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-11 h-11 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0" style="background:linear-gradient(135deg,#10b981,#059669)">4</div>
+                <div class="flex-1 glass-light rounded-xl p-3.5">
+                  <div class="font-semibold text-sm">Economic Participation</div>
+                  <div class="text-xs text-blue-300">Freelancing, business, or employment</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-electric-500/10">
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-blue-300">Completion Rate</span>
+                <span class="font-bold text-gold-400">85%</span>
+              </div>
+              <div class="w-full rounded-full h-2" style="background:rgba(58,134,255,0.1)">
+                <div class="h-2 rounded-full" style="width:85%;background:linear-gradient(90deg,var(--electric),var(--gold))"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITIVE ADVANTAGE -->
+  <section id="advantage" class="py-24 geo-bg relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+        <span class="text-gold-400 font-semibold text-xs uppercase tracking-widest font-mono">Competitive Advantage</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6" style="color:var(--off-white)">Our Unfair Advantage</h2>
+        <p class="text-lg text-blue-200">Three pillars no competitor combines. This is our moat.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="glass rounded-3xl p-8 card-hover reveal group">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(232,160,32,0.15);border:1px solid rgba(232,160,32,0.3)">
+            <i data-lucide="heart-handshake" class="w-7 h-7 text-gold-400"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Cultural Fluency</h3>
+          <p class="text-blue-200 text-sm leading-relaxed mb-6">Deep understanding of Arewa community values, language nuances, and Islamic ethics built into every product decision. We don't translate — we transcreate.</p>
+          <div class="flex items-center space-x-2 text-gold-400 text-sm font-semibold">
+            <span>Built into DNA</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-8 card-hover reveal" style="transition-delay:0.15s">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(30,111,255,0.15);border:1px solid rgba(30,111,255,0.3)">
+            <i data-lucide="user-cog" class="w-7 h-7 text-electric-400"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Founder's Edge</h3>
+          <p class="text-blue-200 text-sm leading-relaxed mb-6">Rare intersection of Software Engineering, hands-on practical engineering (Panel Beating), and Business Analysis. Tech translated into real-world community outcomes.</p>
+          <div class="flex items-center space-x-2 text-electric-400 text-sm font-semibold">
+            <span>Unique Background</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-8 card-hover reveal" style="transition-delay:0.3s">
+          <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3)">
+            <i data-lucide="send" class="w-7 h-7 text-green-400"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Telegram Distribution</h3>
+          <p class="text-blue-200 text-sm leading-relaxed mb-6">Access millions without heavy app installs, massive data costs, or English literacy barriers. Telegram's reach in Northern Nigeria, weaponized for education.</p>
+          <div class="flex items-center space-x-2 text-green-400 text-sm font-semibold">
+            <span>Zero Friction</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="glass rounded-3xl overflow-hidden reveal">
+        <div class="px-8 py-6 border-b border-electric-500/10">
+          <h3 class="text-xl font-bold text-center">Why No One Else Comes Close</h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(58,134,255,0.15)">
+                <th class="text-left p-5 text-blue-300 font-medium">Feature</th>
+                <th class="text-center p-5 text-gold-400 font-bold">KZDI Hub</th>
+                <th class="text-center p-5 text-blue-400 font-medium">Mainstream EdTech</th>
+                <th class="text-center p-5 text-blue-400 font-medium">Generic AI Tools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="p-5 text-blue-100">Hausa Language Support</td><td class="p-5 text-center"><span class="glass-light text-electric-300 px-3 py-1 rounded-full text-xs font-bold">Native</span></td><td class="p-5 text-center text-blue-400">None</td><td class="p-5 text-center text-blue-400">Basic / Poor</td></tr>
+              <tr><td class="p-5 text-blue-100">Telegram Bot Integration</td><td class="p-5 text-center"><span class="glass-light text-electric-300 px-3 py-1 rounded-full text-xs font-bold">Live v2.0</span></td><td class="p-5 text-center text-blue-400">App Required</td><td class="p-5 text-center text-blue-400">Web Only</td></tr>
+              <tr><td class="p-5 text-blue-100">Islamic Finance Compliance</td><td class="p-5 text-center"><span class="glass-light text-electric-300 px-3 py-1 rounded-full text-xs font-bold">Built-in</span></td><td class="p-5 text-center text-blue-400">Ignored</td><td class="p-5 text-center text-blue-400">Ignored</td></tr>
+              <tr><td class="p-5 text-blue-100">Arewa Cultural Context</td><td class="p-5 text-center"><span class="glass-light text-electric-300 px-3 py-1 rounded-full text-xs font-bold">Core Design</span></td><td class="p-5 text-center text-blue-400">Generic</td><td class="p-5 text-center text-blue-400">None</td></tr>
+              <tr><td class="p-5 text-blue-100">Low-Bandwidth Optimized</td><td class="p-5 text-center"><span class="glass-light text-electric-300 px-3 py-1 rounded-full text-xs font-bold">Yes</span></td><td class="p-5 text-center text-blue-400">No</td><td class="p-5 text-center text-blue-400">No</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section id="ecosystem" class="py-24 relative" style="background:var(--navy-900)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+        <span class="text-electric-400 font-semibold text-xs uppercase tracking-widest font-mono">The Ecosystem</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-4 mb-6" style="color:var(--off-white)">More Than a Course — Infrastructure</h2>
+        <p class="text-lg text-blue-200">Five interconnected pillars creating a self-reinforcing cycle of digital empowerment for Northern Nigeria.</p>
+      </div>
+
+      <div class="mosaic">
+        <!-- Large hero card -->
+        <div class="col-span-12 md:col-span-7 glass rounded-3xl p-10 relative overflow-hidden group card-hover reveal" style="min-height:280px">
+          <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl animate-pulse-slow" style="background:rgba(30,111,255,0.12)"></div>
+          <div class="relative z-10 flex flex-col justify-between h-full">
+            <div>
+              <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 glow-btn">
+                <i data-lucide="layers" class="w-7 h-7 text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold mb-4">Integrated Platform</h3>
+              <p class="text-blue-200 leading-relaxed max-w-md text-sm">Low-bandwidth web platform (kzdi-tech.vercel.app) serving as the central hub. Access courses, track progress, and connect with community — optimized for Northern Nigeria's connectivity realities.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="glass-light px-3 py-1 rounded-full text-xs text-electric-300">YouTube Integration</span>
+              <span class="glass-light px-3 py-1 rounded-full text-xs text-electric-300">Progress Tracking</span>
+              <span class="glass-light px-3 py-1 rounded-full text-xs text-electric-300">Gemini 2.5 Flash Powered</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-5 glass rounded-3xl p-8 card-hover reveal" style="transition-delay:0.1s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4 glow-btn"><i data-lucide="bot" class="w-6 h-6 text-white"></i></div>
+          <h3 class="text-lg font-bold mb-2">@KzMentorBot</h3>
+          <p class="text-blue-200 text-sm">Telegram-native AI tutoring available 24/7. Personalized, patient, and culturally aware. Built with Telegraf &amp; Gemini.</p>
+        </div>
+
+        <div class="col-span-12 md:col-span-5 glass rounded-3xl p-8 card-hover reveal" style="transition-delay:0.15s">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:linear-gradient(135deg,var(--gold),#f0b840)"><i data-lucide="library" class="w-6 h-6 text-navy-950"></i></div>
+          <h3 class="text-lg font-bold mb-2">Content Library</h3>
+          <p class="text-blue-200 text-sm">Modular curriculum in Hausa &amp; English. AI, Web3, digital skills, and Islamic fintech. Distributed via YouTube &amp; bot.</p>
+        </div>
+
+        <div class="col-span-12 md:col-span-6 glass rounded-3xl p-8 card-hover reveal" style="transition-delay:0.2s">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#10b981,#059669)"><i data-lucide="users-round" class="w-6 h-6 text-white"></i></div>
+            <span class="glass-light text-electric-300 text-xs font-bold px-3 py-1 rounded-full">Community</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Peer Networks</h3>
+          <p class="text-blue-200 text-sm">Cohort-based learning circles, mentorship matching, and regional community managers who understand local context.</p>
+        </div>
+
+        <div class="col-span-12 md:col-span-6 glass rounded-3xl p-8 card-hover reveal" style="transition-delay:0.25s">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#7c3aed,#6d28d9)"><i data-lucide="rocket" class="w-6 h-6 text-white"></i></div>
+            <span class="glass-light text-gold-400 text-xs font-bold px-3 py-1 rounded-full">Pipeline</span>
+          </div>
+          <h3 class="text-lg font-bold mb-2">Entrepreneurship Pipeline</h3>
+          <p class="text-blue-200 text-sm">From learner to earner. Freelance opportunities, startup incubation, and connections to the global digital economy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 geo-bg relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-1/4 w-80 h-80 rounded-full blur-3xl" style="background:rgba(30,111,255,0.1)"></div>
+      <div class="absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-3xl" style="background:rgba(232,160,32,0.08)"></div>
+    </div>
+    <div class="max-w-3xl mx-auto px-4 text-center relative z-10 reveal">
+      <h2 class="text-4xl md:text-6xl font-bold mb-6" style="color:var(--off-white)">Ready to Build the Future?</h2>
+      <p class="text-lg text-blue-200 mb-12 max-w-2xl mx-auto">Join Nigeria's first Hausa-English bilingual AI education ecosystem. No barriers. Just Telegram and curiosity.</p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://t.me/KzMentorBot" target="_blank" rel="noopener"
+           class="glow-btn text-white px-10 py-5 rounded-full font-bold text-lg flex items-center space-x-3 group w-full sm:w-auto justify-center">
+          <i data-lucide="send" class="w-6 h-6 group-hover:translate-x-0.5 transition-transform"></i>
+          <span>Start on Telegram</span>
+        </a>
+        <a href="https://kzdi-tech.vercel.app" target="_blank" rel="noopener"
+           class="glass text-white border-electric-500/30 px-10 py-5 rounded-full font-bold text-lg hover:border-electric-500/60 transition-colors w-full sm:w-auto">
+          Partner With Us
+        </a>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-6 text-blue-300 text-sm">
+        <div class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold-400"></i><span>Free to start</span></div>
+        <div class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold-400"></i><span>No heavy downloads</span></div>
+        <div class="flex items-center space-x-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold-400"></i><span>Community supported</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--navy-950);border-top:1px solid rgba(58,134,255,0.1)" class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-2">
+          <div class="flex items-center space-x-3 mb-5">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center glass-light">
+              <span class="font-bold text-gold-400" style="font-family:'DM Mono',monospace">KZ</span>
+            </div>
+            <div>
+              <div class="font-bold text-lg">KZDI Hub</div>
+              <div class="text-xs text-electric-300 font-arabic">كيمية الظاهري</div>
+            </div>
+          </div>
+          <p class="text-blue-300 text-sm max-w-sm leading-relaxed">Nigeria's first Hausa-English bilingual AI and Web3 education ecosystem, built for Arewa youth by people who understand Arewa.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4 text-gold-400 text-sm uppercase tracking-wider">Platform</h4>
+          <ul class="space-y-3 text-blue-300 text-sm">
+            <li><a href="https://t.me/KzMentorBot" target="_blank" rel="noopener" class="hover:text-white transition-colors">@KzMentorBot</a></li>
+            <li><a href="https://kzdi-tech.vercel.app" target="_blank" rel="noopener" class="hover:text-white transition-colors">Web Platform</a></li>
+            <li><a href="#solutions" class="hover:text-white transition-colors">Curriculum</a></li>
+            <li><a href="#ecosystem" class="hover:text-white transition-colors">Community</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold mb-4 text-gold-400 text-sm uppercase tracking-wider">Connect</h4>
+          <ul class="space-y-3 text-blue-300 text-sm">
+            <li class="flex items-center space-x-2"><i data-lucide="send" class="w-4 h-4 text-electric-400"></i><a href="https://t.me/KzMentorBot" target="_blank" rel="noopener" class="hover:text-white transition-colors">Telegram Bot</a></li>
+            <li class="flex items-center space-x-2"><i data-lucide="youtube" class="w-4 h-4 text-red-400"></i><span>YouTube Channel</span></li>
+            <li class="flex items-center space-x-2"><i data-lucide="twitter" class="w-4 h-4 text-sky-400"></i><a href="https://x.com/Kriptomech" target="_blank" rel="noopener" class="hover:text-white transition-colors">@Kriptomech</a></li>
+            <li class="flex items-center space-x-2"><i data-lucide="globe" class="w-4 h-4 text-electric-400"></i><a href="https://kzdi-tech.vercel.app" target="_blank" rel="noopener" class="hover:text-white transition-colors">kzdi-tech.vercel.app</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8" style="border-top:1px solid rgba(58,134,255,0.1)">
+        <p class="text-blue-400 text-xs">© 2026 KZ Digital Intelligence Hub — Kimiyyar Zahiri / Kriptomech</p>
+        <p class="text-blue-500 text-xs mt-2 md:mt-0 font-arabic">بسم الله الرحمن الرحيم</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Icons
+    lucide.createIcons();
+
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.style.boxShadow = window.scrollY > 80 ? '0 4px 30px rgba(30,111,255,0.15)' : 'none';
+    }, { passive: true });
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
