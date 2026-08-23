@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kzdi-web-site.vercel.app/sitemap.xml
