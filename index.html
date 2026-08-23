@@ -6,7 +6,7 @@
   <meta name="google-site-verification" content="QbR0KnKI6AHtVuNUDe0k8SOgXN_tOUf6DNlwvBouCH4">
   <meta name="description" content="Kimiyyar Zahiri Digital Intelligence (KZDI) builds practical AI, digital intelligence and technology education systems for real-world application, with accessible Hausa and English learning.">
   <meta name="keywords" content="KZDI, Kimiyyar Zahiri, Digital Intelligence, AI Nigeria, Hausa AI, technology education, Arewa, cybersecurity, Hausa NLP">
-  <meta property="og:title" content="Kimiyyar Zahiri Digital Intelligence | KZDI">
+  <meta property="og:title" content="KZDI | Kimiyyar Zahiri Digital Intelligence">
   <meta property="og:description" content="Practical digital intelligence, AI and technology education built for real-world impact.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -60,6 +60,43 @@
     .mono { font-family:'DM Mono',monospace; }
     .timeline { border-left:1px solid rgba(58,134,255,.25); }
     .timeline-dot { box-shadow:0 0 0 5px rgba(58,134,255,.08),0 0 20px rgba(58,134,255,.25); }
+
+    .evidence-card { overflow:hidden; }
+    .evidence-media {
+      position:relative; aspect-ratio:16/10; overflow:hidden;
+      background:#0a0f1e; border-radius:14px; cursor:zoom-in;
+    }
+    .evidence-media img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .45s ease, opacity .25s ease;
+    }
+    .evidence-card:hover .evidence-media img { transform:scale(1.035); }
+    .evidence-overlay {
+      position:absolute; inset:auto 0 0 0; padding:12px;
+      background:linear-gradient(transparent,rgba(0,0,0,.78));
+      color:#fff; font-size:.72rem;
+    }
+    .lightbox {
+      position:fixed; inset:0; z-index:100;
+      display:none; align-items:center; justify-content:center;
+      padding:18px; background:rgba(0,0,0,.88);
+    }
+    .lightbox.open { display:flex; }
+    .lightbox img {
+      max-width:min(96vw,1200px); max-height:88vh;
+      object-fit:contain; border-radius:12px;
+      box-shadow:0 25px 80px rgba(0,0,0,.55);
+    }
+    .lightbox-close {
+      position:fixed; top:18px; right:18px; width:44px; height:44px;
+      border-radius:12px; border:1px solid rgba(255,255,255,.2);
+      background:rgba(13,27,42,.86); color:white; font-size:26px;
+    }
+    .evidence-note {
+      border-left:3px solid var(--gold);
+      background:rgba(232,160,32,.06);
+    }
+
     @media (prefers-reduced-motion:reduce) {
       *,*::before,*::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
       .reveal { opacity:1; transform:none; }
@@ -73,26 +110,22 @@
     "name":"Kimiyyar Zahiri Digital Intelligence",
     "alternateName":"KZDI",
     "email":"kzdiofficial@gmail.com",
-    "url":"https://kimiyyarafrica.cv/"
+    "url":"https://kzdi-web-site.vercel.app/"
   }
   </script>
 </head>
 
 <body>
-  <!-- NAV -->
   <nav id="nav" class="fixed top-0 w-full z-50 bg-[#0a0f1e]/90 backdrop-blur-xl border-b border-blue-400/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between">
         <a href="#top" class="flex items-center gap-3" aria-label="KZDI home">
-          <div class="w-10 h-10 rounded-xl glass flex items-center justify-center">
-            <span class="mono font-bold text-gold-400">KZ</span>
-          </div>
+          <div class="w-10 h-10 rounded-xl glass flex items-center justify-center"><span class="mono font-bold text-gold-400">KZ</span></div>
           <div>
             <div class="font-bold leading-none">KZDI</div>
             <div class="text-[10px] text-blue-300 mt-1 tracking-wider">KIMIYYAR ZAHIRI DIGITAL INTELLIGENCE</div>
           </div>
         </a>
-
         <div class="hidden md:flex items-center gap-7 text-sm text-blue-200">
           <a href="#proof" class="hover:text-white">Proof</a>
           <a href="#mission" class="hover:text-white">Mission</a>
@@ -100,62 +133,36 @@
           <a href="#founder" class="hover:text-white">Founder</a>
           <a href="#connect" class="hover:text-white">Connect</a>
         </div>
-
         <a href="#connect" class="hidden sm:inline-flex btn-blue px-4 py-2.5 rounded-xl text-sm font-semibold">Connect with KZDI</a>
       </div>
     </div>
   </nav>
 
   <main id="top">
-    <!-- HERO -->
     <section class="min-h-screen pt-32 pb-20 flex items-center geo relative overflow-hidden">
       <div class="absolute -top-40 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
       <div class="absolute -bottom-40 -right-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
         <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center">
           <div class="reveal">
-            <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs text-blue-300 mono mb-7">
-              <span class="w-2 h-2 bg-emerald-400 rounded-full"></span>
-              PRACTICAL DIGITAL INTELLIGENCE
-            </div>
-
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[.98]">
-              Digital Intelligence
-              <span class="block gradient mt-3">Built for Real-World Impact.</span>
-            </h1>
-
-            <p class="text-lg sm:text-xl text-blue-200 leading-relaxed max-w-2xl mt-7">
-              Kimiyyar Zahiri Digital Intelligence equips young people, aspiring professionals and early-stage founders with practical AI, digital and technology skills — turning knowledge into applied capability and opportunity.
-            </p>
-
+            <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-xs text-blue-300 mono mb-7"><span class="w-2 h-2 bg-emerald-400 rounded-full"></span>PRACTICAL DIGITAL INTELLIGENCE</div>
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[.98]">Digital Intelligence<span class="block gradient mt-3">Built for Real-World Impact.</span></h1>
+            <p class="text-lg sm:text-xl text-blue-200 leading-relaxed max-w-2xl mt-7">Kimiyyar Zahiri Digital Intelligence equips young people, aspiring professionals and early-stage founders with practical AI, digital and technology skills — turning knowledge into applied capability and opportunity.</p>
             <div class="flex flex-wrap gap-4 mt-9">
               <a href="#ecosystem" class="btn-blue px-6 py-3.5 rounded-xl font-semibold">Explore KZDI</a>
               <a href="#connect" class="glass px-6 py-3.5 rounded-xl font-semibold hover:bg-blue-500/10">Join the Community</a>
             </div>
-
             <div class="flex flex-wrap gap-3 mt-8 text-xs text-blue-300">
-              <span class="glass rounded-full px-3 py-1.5">Hausa</span>
-              <span class="glass rounded-full px-3 py-1.5">English</span>
-              <span class="glass rounded-full px-3 py-1.5">AI</span>
-              <span class="glass rounded-full px-3 py-1.5">Cybersecurity</span>
-              <span class="glass rounded-full px-3 py-1.5">Digital Skills</span>
+              <span class="glass rounded-full px-3 py-1.5">Hausa</span><span class="glass rounded-full px-3 py-1.5">English</span><span class="glass rounded-full px-3 py-1.5">AI</span><span class="glass rounded-full px-3 py-1.5">Cybersecurity</span><span class="glass rounded-full px-3 py-1.5">Digital Skills</span>
             </div>
           </div>
-
           <div class="reveal">
             <div class="glass rounded-3xl p-7 sm:p-9">
               <div class="mono text-xs text-blue-400 tracking-[.2em] uppercase">The KZDI principle</div>
-              <div class="text-3xl sm:text-4xl font-bold mt-5">
-                Knowledge is not power.
-                <span class="block text-gold-400 mt-2">Applied knowledge is power.</span>
-              </div>
-
+              <div class="text-3xl sm:text-4xl font-bold mt-5">Knowledge is not power.<span class="block text-gold-400 mt-2">Applied knowledge is power.</span></div>
               <div class="grid grid-cols-5 items-center gap-2 mt-9 text-center text-[10px] sm:text-xs">
-                <div><div class="w-10 h-10 mx-auto rounded-xl bg-blue-500/10 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-blue-300"></i></div><p class="mt-2">Learn</p></div>
-                <div class="text-blue-500">→</div>
-                <div><div class="w-10 h-10 mx-auto rounded-xl bg-amber-500/10 flex items-center justify-center"><i data-lucide="brain" class="w-5 h-5 text-gold-400"></i></div><p class="mt-2">Understand</p></div>
-                <div class="text-blue-500">→</div>
+                <div><div class="w-10 h-10 mx-auto rounded-xl bg-blue-500/10 flex items-center justify-center"><i data-lucide="book-open" class="w-5 h-5 text-blue-300"></i></div><p class="mt-2">Learn</p></div><div class="text-blue-500">→</div>
+                <div><div class="w-10 h-10 mx-auto rounded-xl bg-amber-500/10 flex items-center justify-center"><i data-lucide="brain" class="w-5 h-5 text-gold-400"></i></div><p class="mt-2">Understand</p></div><div class="text-blue-500">→</div>
                 <div><div class="w-10 h-10 mx-auto rounded-xl bg-emerald-500/10 flex items-center justify-center"><i data-lucide="rocket" class="w-5 h-5 text-emerald-400"></i></div><p class="mt-2">Build</p></div>
               </div>
               <div class="text-center text-blue-400 mt-5 text-sm">→ Apply → Create Value</div>
@@ -165,51 +172,122 @@
       </div>
     </section>
 
-    <!-- PROOF -->
+    <!-- PROOF + EVIDENCE GALLERY -->
     <section id="proof" class="py-24 bg-[#0d1b2a] border-y border-blue-400/10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl reveal">
-          <div class="mono text-xs text-gold-400 tracking-[.2em] uppercase">Recognition & learning</div>
+          <div class="mono text-xs text-gold-400 tracking-[.2em] uppercase">Proof / Recognition & learning</div>
           <h2 class="text-4xl md:text-5xl font-bold mt-3">Evidence over exaggeration.</h2>
-          <p class="text-blue-200 mt-5 text-lg">A growing record of learning, participation and practical technology work.</p>
+          <p class="text-blue-200 mt-5 text-lg">A growing record of verified learning, programme recognition and practical technology work.</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
           <article class="glass rounded-2xl p-6 card reveal">
-            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5">
-              <i data-lucide="award" class="text-emerald-400"></i>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-5"><i data-lucide="award" class="text-emerald-400"></i></div>
             <div class="text-xs mono text-emerald-400">RECOGNITION</div>
             <h3 class="font-bold text-lg mt-2">3MTT Fellow of the Week</h3>
             <p class="text-sm text-blue-300 mt-3">Featured for achievements and participation within Nigeria's national technology-learning ecosystem.</p>
           </article>
-
           <article class="glass rounded-2xl p-6 card reveal">
-            <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
-              <span class="font-bold text-red-300">MIT</span>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center mb-5"><span class="font-bold text-red-300">MIT</span></div>
             <div class="text-xs mono text-red-300">8 MAY 2026</div>
             <h3 class="font-bold text-lg mt-2">Introduction to Universal AI</h3>
-            <p class="text-sm text-blue-300 mt-3">MIT Open Learning course certificate.</p>
+            <p class="text-sm text-blue-300 mt-3">MIT Open Learning course certificate completed.</p>
           </article>
-
           <article class="glass rounded-2xl p-6 card reveal">
-            <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
-              <span class="font-bold text-red-300">MIT</span>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center mb-5"><span class="font-bold text-red-300">MIT</span></div>
             <div class="text-xs mono text-red-300">23 AUG 2026</div>
             <h3 class="font-bold text-lg mt-2">Python Coding, Part 1</h3>
             <p class="text-sm text-blue-300 mt-3">MIT Open Learning course certificate covering Python programming and computational thinking.</p>
           </article>
-
           <article class="glass rounded-2xl p-6 card reveal">
-            <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center mb-5">
-              <span class="font-bold text-red-300">MIT</span>
-            </div>
+            <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center mb-5"><span class="font-bold text-red-300">MIT</span></div>
             <div class="text-xs mono text-red-300">23 AUG 2026</div>
             <h3 class="font-bold text-lg mt-2">AI and Finance</h3>
-            <p class="text-sm text-blue-300 mt-3">MIT Open Learning course certificate.</p>
+            <p class="text-sm text-blue-300 mt-3">MIT Open Learning course certificate completed.</p>
           </article>
+        </div>
+
+        <div class="flex items-end justify-between gap-5 mt-20 reveal">
+          <div>
+            <div class="mono text-xs text-blue-400 tracking-[.2em] uppercase">Visual evidence portfolio</div>
+            <h3 class="text-3xl md:text-4xl font-bold mt-2">See the record.</h3>
+            <p class="text-blue-300 mt-3 max-w-2xl">Selected visual evidence supporting the learning and recognition record. Tap any image to inspect it at full size.</p>
+          </div>
+          <span class="hidden sm:inline-flex glass rounded-full px-4 py-2 text-xs text-blue-300">5 evidence items</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+          <article class="glass rounded-2xl p-3 evidence-card card reveal">
+            <button class="evidence-media w-full" data-lightbox="assets/evidence/mit-ai-finance.webp" aria-label="Open MIT AI and Finance certificate evidence">
+              <img src="assets/evidence/mit-ai-finance.webp" alt="MIT Open Learning AI and Finance certificate" loading="lazy">
+              <span class="evidence-overlay">MIT Open Learning · AI and Finance</span>
+            </button>
+            <div class="p-4">
+              <div class="mono text-[10px] text-red-300">23 AUG 2026</div>
+              <h4 class="font-bold mt-1">AI and Finance</h4>
+              <p class="text-xs text-blue-300 mt-2">Course certificate issued by MIT Open Learning.</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-3 evidence-card card reveal">
+            <button class="evidence-media w-full" data-lightbox="assets/evidence/mit-python-verification.webp" aria-label="Open MIT Python credential verification evidence">
+              <img src="assets/evidence/mit-python-verification.webp" alt="MIT Open Learning Python Coding Part 1 credential verification" loading="lazy">
+              <span class="evidence-overlay">MIT Open Learning · Credential verification</span>
+            </button>
+            <div class="p-4">
+              <div class="mono text-[10px] text-red-300">23 AUG 2026</div>
+              <h4 class="font-bold mt-1">Python Coding, Part 1</h4>
+              <p class="text-xs text-blue-300 mt-2">Credential page showing verification status and course completion.</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-3 evidence-card card reveal">
+            <button class="evidence-media w-full" data-lightbox="assets/evidence/3mtt-fellow-of-week.webp" aria-label="Open 3MTT Fellow of the Week evidence">
+              <img src="assets/evidence/3mtt-fellow-of-week.webp" alt="3MTT Fellow of the Week recognition graphic" loading="lazy">
+              <span class="evidence-overlay">3MTT · Fellow of the Week</span>
+            </button>
+            <div class="p-4">
+              <div class="mono text-[10px] text-emerald-400">RECOGNITION</div>
+              <h4 class="font-bold mt-1">3MTT Fellow of the Week</h4>
+              <p class="text-xs text-blue-300 mt-2">Recognition graphic highlighting programme achievements and participation.</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-3 evidence-card card reveal">
+            <button class="evidence-media w-full" data-lightbox="assets/evidence/public-footprint.webp" aria-label="Open public footprint screenshot">
+              <img src="assets/evidence/public-footprint.webp" alt="Public search footprint for Kimiyyar Zahiri Digital Intelligence" loading="lazy">
+              <span class="evidence-overlay">Public footprint · contextual evidence</span>
+            </button>
+            <div class="p-4">
+              <div class="mono text-[10px] text-blue-400">PUBLIC FOOTPRINT</div>
+              <h4 class="font-bold mt-1">External visibility</h4>
+              <p class="text-xs text-blue-300 mt-2">Contextual screenshot of public search visibility; not presented as primary credential verification.</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-3 evidence-card card reveal">
+            <button class="evidence-media w-full" data-lightbox="assets/evidence/technical-learning-environment.webp" aria-label="Open technical learning environment evidence">
+              <img src="assets/evidence/technical-learning-environment.webp" alt="Technical cybersecurity learning environment on a Windows computer" loading="lazy">
+              <span class="evidence-overlay">Technical learning · cybersecurity environment</span>
+            </button>
+            <div class="p-4">
+              <div class="mono text-[10px] text-blue-400">PRACTICAL WORK</div>
+              <h4 class="font-bold mt-1">Technical learning environment</h4>
+              <p class="text-xs text-blue-300 mt-2">Supporting visual evidence of hands-on cybersecurity technology learning.</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-5 evidence-card card reveal flex flex-col justify-center">
+            <div class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center"><span class="font-bold text-red-300">MIT</span></div>
+            <div class="mono text-[10px] text-red-300 mt-5">08 MAY 2026</div>
+            <h4 class="text-xl font-bold mt-1">Introduction to Universal AI</h4>
+            <p class="text-sm text-blue-300 mt-3">Certificate recorded in the KZDI learning timeline. The certificate image can be added here when available.</p>
+          </article>
+        </div>
+
+        <div class="evidence-note rounded-xl p-4 mt-7 reveal">
+          <p class="text-xs sm:text-sm text-blue-200"><strong class="text-gold-300">Evidence standard:</strong> official credentials and programme recognition are treated as primary proof. Search-result screenshots and general technical-environment images are kept as contextual supporting material, not as substitutes for verification.</p>
         </div>
 
         <div class="glass rounded-2xl p-6 mt-6 reveal">
@@ -224,59 +302,32 @@
       </div>
     </section>
 
-    <!-- MISSION -->
     <section id="mission" class="py-24 geo">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-14 items-start">
           <div class="reveal">
             <div class="mono text-xs text-blue-400 tracking-[.2em] uppercase">What we do</div>
             <h2 class="text-4xl md:text-5xl font-bold mt-3">Turning digital knowledge into practical capability.</h2>
-            <p class="text-blue-200 text-lg leading-relaxed mt-6">
-              KZDI focuses on applied learning: understanding technology, using it responsibly, building with it, and creating measurable value from it.
-            </p>
+            <p class="text-blue-200 text-lg leading-relaxed mt-6">KZDI focuses on applied learning: understanding technology, using it responsibly, building with it, and creating measurable value from it.</p>
           </div>
-
           <div class="grid sm:grid-cols-2 gap-5">
-            <article class="glass rounded-2xl p-6 card reveal">
-              <i data-lucide="bot" class="text-blue-400 w-7 h-7"></i>
-              <h3 class="font-bold mt-5">AI & Digital Intelligence</h3>
-              <p class="text-sm text-blue-300 mt-3">Practical AI literacy, tools, automation and intelligent systems.</p>
-            </article>
-            <article class="glass rounded-2xl p-6 card reveal">
-              <i data-lucide="code-2" class="text-gold-400 w-7 h-7"></i>
-              <h3 class="font-bold mt-5">Technology Education</h3>
-              <p class="text-sm text-blue-300 mt-3">Programming, cybersecurity, digital tools and emerging technologies.</p>
-            </article>
-            <article class="glass rounded-2xl p-6 card reveal">
-              <i data-lucide="languages" class="text-emerald-400 w-7 h-7"></i>
-              <h3 class="font-bold mt-5">Hausa & Local Technology</h3>
-              <p class="text-sm text-blue-300 mt-3">Hausa-first content and local-language NLP initiatives that lower barriers to technology.</p>
-            </article>
-            <article class="glass rounded-2xl p-6 card reveal">
-              <i data-lucide="trending-up" class="text-purple-400 w-7 h-7"></i>
-              <h3 class="font-bold mt-5">Learning → Application</h3>
-              <p class="text-sm text-blue-300 mt-3">Projects, portfolios, entrepreneurship and pathways toward opportunity.</p>
-            </article>
+            <article class="glass rounded-2xl p-6 card reveal"><i data-lucide="bot" class="text-blue-400 w-7 h-7"></i><h3 class="font-bold mt-5">AI & Digital Intelligence</h3><p class="text-sm text-blue-300 mt-3">Practical AI literacy, tools, automation and intelligent systems.</p></article>
+            <article class="glass rounded-2xl p-6 card reveal"><i data-lucide="code-2" class="text-gold-400 w-7 h-7"></i><h3 class="font-bold mt-5">Technology Education</h3><p class="text-sm text-blue-300 mt-3">Programming, cybersecurity, digital tools and emerging technologies.</p></article>
+            <article class="glass rounded-2xl p-6 card reveal"><i data-lucide="languages" class="text-emerald-400 w-7 h-7"></i><h3 class="font-bold mt-5">Hausa & Local Technology</h3><p class="text-sm text-blue-300 mt-3">Hausa-first content and local-language NLP initiatives that lower barriers to technology.</p></article>
+            <article class="glass rounded-2xl p-6 card reveal"><i data-lucide="trending-up" class="text-purple-400 w-7 h-7"></i><h3 class="font-bold mt-5">Learning → Application</h3><p class="text-sm text-blue-300 mt-3">Projects, portfolios, entrepreneurship and pathways toward opportunity.</p></article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PHILOSOPHY -->
     <section class="py-24 bg-[#0d1b2a] border-y border-blue-400/10">
       <div class="max-w-5xl mx-auto px-4 text-center reveal">
         <div class="mono text-xs text-gold-400 tracking-[.2em] uppercase">Our philosophy</div>
-        <blockquote class="text-4xl md:text-6xl font-extrabold mt-5 leading-tight">
-          Knowledge is not power.
-          <span class="block gradient mt-3">Applied knowledge is power.</span>
-        </blockquote>
-        <p class="text-blue-200 text-lg max-w-2xl mx-auto mt-8 leading-relaxed">
-          KZDI exists to close the gap between knowing something and being able to use it.
-        </p>
+        <blockquote class="text-4xl md:text-6xl font-extrabold mt-5 leading-tight">Knowledge is not power.<span class="block gradient mt-3">Applied knowledge is power.</span></blockquote>
+        <p class="text-blue-200 text-lg max-w-2xl mx-auto mt-8 leading-relaxed">KZDI exists to close the gap between knowing something and being able to use it.</p>
       </div>
     </section>
 
-    <!-- ECOSYSTEM -->
     <section id="ecosystem" class="py-24 geo">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl reveal">
@@ -284,193 +335,122 @@
           <h2 class="text-4xl md:text-5xl font-bold mt-3">Building beyond the course.</h2>
           <p class="text-blue-200 text-lg mt-5">A growing set of initiatives designed to connect learning, technology, community and opportunity.</p>
         </div>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-          <article class="glass rounded-2xl p-7 card reveal">
-            <i data-lucide="layout-dashboard" class="text-blue-400 w-8 h-8"></i>
-            <h3 class="text-xl font-bold mt-5">KZDI Hub</h3>
-            <p class="text-sm text-blue-300 mt-3">The digital education and resource layer for KZDI initiatives.</p>
-          </article>
-          <article class="glass rounded-2xl p-7 card reveal">
-            <i data-lucide="bot" class="text-gold-400 w-8 h-8"></i>
-            <h3 class="text-xl font-bold mt-5">AI & Automation</h3>
-            <p class="text-sm text-blue-300 mt-3">Practical intelligent systems, assistants and automation workflows.</p>
-          </article>
-          <article class="glass rounded-2xl p-7 card reveal">
-            <i data-lucide="languages" class="text-emerald-400 w-8 h-8"></i>
-            <h3 class="text-xl font-bold mt-5">Hausa NLP</h3>
-            <p class="text-sm text-blue-300 mt-3">Local-language data and natural-language technology development.</p>
-          </article>
-          <article class="glass rounded-2xl p-7 card reveal">
-            <i data-lucide="users" class="text-purple-400 w-8 h-8"></i>
-            <h3 class="text-xl font-bold mt-5">Community</h3>
-            <p class="text-sm text-blue-300 mt-3">Learning communities, peer collaboration and accessible digital education.</p>
-          </article>
-          <article class="glass rounded-2xl p-7 card reveal">
-            <i data-lucide="network" class="text-blue-400 w-8 h-8"></i>
-            <h3 class="text-xl font-bold mt-5">Talent Intelligence</h3>
-            <p class="text-sm text-blue-300 mt-3">Technology for talent evaluation, intelligence and opportunity systems.</p>
-          </article>
-          <article class="glass rounded-2xl p-7 card reveal">
-            <i data-lucide="rocket" class="text-gold-400 w-8 h-8"></i>
-            <h3 class="text-xl font-bold mt-5">KZDI Tech Hub</h3>
-            <p class="text-sm text-blue-300 mt-3">A longer-term platform for practical technology education and innovation.</p>
-          </article>
+          <article class="glass rounded-2xl p-7 card reveal"><i data-lucide="layout-dashboard" class="text-blue-400 w-8 h-8"></i><h3 class="text-xl font-bold mt-5">KZDI Hub</h3><p class="text-sm text-blue-300 mt-3">The digital education and resource layer for KZDI initiatives.</p></article>
+          <article class="glass rounded-2xl p-7 card reveal"><i data-lucide="bot" class="text-gold-400 w-8 h-8"></i><h3 class="text-xl font-bold mt-5">AI & Automation</h3><p class="text-sm text-blue-300 mt-3">Practical intelligent systems, assistants and automation workflows.</p></article>
+          <article class="glass rounded-2xl p-7 card reveal"><i data-lucide="languages" class="text-emerald-400 w-8 h-8"></i><h3 class="text-xl font-bold mt-5">Hausa NLP</h3><p class="text-sm text-blue-300 mt-3">Local-language data and natural-language technology development.</p></article>
+          <article class="glass rounded-2xl p-7 card reveal"><i data-lucide="users" class="text-purple-400 w-8 h-8"></i><h3 class="text-xl font-bold mt-5">Community</h3><p class="text-sm text-blue-300 mt-3">Learning communities, peer collaboration and accessible digital education.</p></article>
+          <article class="glass rounded-2xl p-7 card reveal"><i data-lucide="network" class="text-blue-400 w-8 h-8"></i><h3 class="text-xl font-bold mt-5">Talent Intelligence</h3><p class="text-sm text-blue-300 mt-3">Technology for talent evaluation, intelligence and opportunity systems.</p></article>
+          <article class="glass rounded-2xl p-7 card reveal"><i data-lucide="rocket" class="text-gold-400 w-8 h-8"></i><h3 class="text-xl font-bold mt-5">KZDI Tech Hub</h3><p class="text-sm text-blue-300 mt-3">A longer-term platform for practical technology education and innovation.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- FOUNDER -->
     <section id="founder" class="py-24 bg-[#0d1b2a] border-y border-blue-400/10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-[.8fr_1.2fr] gap-14 items-center">
           <div class="glass rounded-3xl p-8 reveal">
-            <div class="w-20 h-20 rounded-2xl bg-blue-500/10 border border-blue-400/20 flex items-center justify-center">
-              <span class="mono text-2xl font-bold text-gold-400">KZ</span>
-            </div>
+            <div class="w-20 h-20 rounded-2xl bg-blue-500/10 border border-blue-400/20 flex items-center justify-center"><span class="mono text-2xl font-bold text-gold-400">KZ</span></div>
             <div class="mono text-xs text-blue-400 mt-7">FOUNDER / PRACTITIONER</div>
             <h2 class="text-3xl font-bold mt-2">Umar Muhammad Sani</h2>
             <p class="text-blue-300 mt-3">Founder, Kimiyyar Zahiri Digital Intelligence</p>
             <a href="https://kimiyyarafrica.cv/" target="_blank" rel="noopener noreferrer" class="inline-flex mt-7 text-sm text-blue-300 hover:text-white">Professional CV ↗</a>
           </div>
-
           <div class="reveal">
             <div class="mono text-xs text-gold-400 tracking-[.2em] uppercase">Built by a practitioner</div>
             <h2 class="text-4xl md:text-5xl font-bold mt-3">Learning, building and teaching from the same ground.</h2>
-            <p class="text-blue-200 text-lg leading-relaxed mt-6">
-              KZDI is founded by a Nigerian technology practitioner working across software engineering, artificial intelligence, cybersecurity, business analysis and practical technology education.
-            </p>
-
+            <p class="text-blue-200 text-lg leading-relaxed mt-6">KZDI is founded by a Nigerian technology practitioner working across software engineering, artificial intelligence, cybersecurity, business analysis and practical technology education.</p>
             <div class="flex flex-wrap gap-3 mt-7">
-              <span class="glass px-4 py-2 rounded-full text-sm">3MTT Fellow of the Week</span>
-              <span class="glass px-4 py-2 rounded-full text-sm">MIT Open Learning</span>
-              <span class="glass px-4 py-2 rounded-full text-sm">Cybersecurity</span>
-              <span class="glass px-4 py-2 rounded-full text-sm">AI / NLP</span>
-              <span class="glass px-4 py-2 rounded-full text-sm">Talent Intelligence</span>
+              <span class="glass px-4 py-2 rounded-full text-sm">3MTT Fellow of the Week</span><span class="glass px-4 py-2 rounded-full text-sm">MIT Open Learning</span><span class="glass px-4 py-2 rounded-full text-sm">Cybersecurity</span><span class="glass px-4 py-2 rounded-full text-sm">AI / NLP</span><span class="glass px-4 py-2 rounded-full text-sm">Talent Intelligence</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TIMELINE -->
     <section class="py-24">
       <div class="max-w-4xl mx-auto px-4">
         <div class="text-center reveal">
           <div class="mono text-xs text-blue-400 tracking-[.2em] uppercase">2026 learning & recognition</div>
           <h2 class="text-4xl md:text-5xl font-bold mt-3">A record of progress.</h2>
         </div>
-
         <div class="timeline ml-4 mt-12 pl-8 space-y-9">
-          <div class="relative reveal">
-            <span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500"></span>
-            <div class="mono text-xs text-gold-400">08 MAY 2026</div>
-            <h3 class="font-bold text-xl mt-1">MIT Open Learning — Introduction to Universal AI</h3>
-            <p class="text-blue-300 text-sm mt-2">Course certificate completed.</p>
-          </div>
-          <div class="relative reveal">
-            <span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-emerald-500"></span>
-            <div class="mono text-xs text-gold-400">2026</div>
-            <h3 class="font-bold text-xl mt-1">3MTT Fellow of the Week</h3>
-            <p class="text-blue-300 text-sm mt-2">Public recognition within the 3MTT learning ecosystem.</p>
-          </div>
-          <div class="relative reveal">
-            <span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500"></span>
-            <div class="mono text-xs text-gold-400">23 AUG 2026</div>
-            <h3 class="font-bold text-xl mt-1">MIT Open Learning — Python Coding, Part 1</h3>
-            <p class="text-blue-300 text-sm mt-2">Course certificate completed.</p>
-          </div>
-          <div class="relative reveal">
-            <span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-gold-500"></span>
-            <div class="mono text-xs text-gold-400">23 AUG 2026</div>
-            <h3 class="font-bold text-xl mt-1">MIT Open Learning — AI and Finance</h3>
-            <p class="text-blue-300 text-sm mt-2">Course certificate completed.</p>
-          </div>
+          <div class="relative reveal"><span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500"></span><div class="mono text-xs text-gold-400">08 MAY 2026</div><h3 class="font-bold text-xl mt-1">MIT Open Learning — Introduction to Universal AI</h3><p class="text-blue-300 text-sm mt-2">Course certificate completed.</p></div>
+          <div class="relative reveal"><span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-emerald-500"></span><div class="mono text-xs text-gold-400">2026</div><h3 class="font-bold text-xl mt-1">3MTT Fellow of the Week</h3><p class="text-blue-300 text-sm mt-2">Public recognition within the 3MTT learning ecosystem.</p></div>
+          <div class="relative reveal"><span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-blue-500"></span><div class="mono text-xs text-gold-400">23 AUG 2026</div><h3 class="font-bold text-xl mt-1">MIT Open Learning — Python Coding, Part 1</h3><p class="text-blue-300 text-sm mt-2">Course certificate completed.</p></div>
+          <div class="relative reveal"><span class="timeline-dot absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-gold-500"></span><div class="mono text-xs text-gold-400">23 AUG 2026</div><h3 class="font-bold text-xl mt-1">MIT Open Learning — AI and Finance</h3><p class="text-blue-300 text-sm mt-2">Course certificate completed.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- CONNECT -->
     <section id="connect" class="py-24 bg-[#0d1b2a] border-y border-blue-400/10">
       <div class="max-w-5xl mx-auto px-4 text-center reveal">
         <div class="mono text-xs text-gold-400 tracking-[.2em] uppercase">Connect with KZDI</div>
         <h2 class="text-4xl md:text-5xl font-bold mt-3">Learn. Build. Connect.</h2>
         <p class="text-blue-200 text-lg mt-5 max-w-2xl mx-auto">Follow the work, join the learning community and explore the growing KZDI ecosystem.</p>
-
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 text-left">
-          <a href="https://kimiyyarafrica.cv/" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card">
-            <i data-lucide="file-text" class="text-gold-400"></i>
-            <div class="font-bold mt-4">Professional CV</div>
-            <div class="text-sm text-blue-300 mt-1">kimiyyarafrica.cv</div>
-          </a>
-          <a href="mailto:kzdiofficial@gmail.com" class="glass rounded-2xl p-5 card">
-            <i data-lucide="mail" class="text-blue-400"></i>
-            <div class="font-bold mt-4">Official Email</div>
-            <div class="text-sm text-blue-300 mt-1">kzdiofficial@gmail.com</div>
-          </a>
-          <a href="https://x.com/iliminkimiyya" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card">
-            <i data-lucide="twitter" class="text-sky-400"></i>
-            <div class="font-bold mt-4">X</div>
-            <div class="text-sm text-blue-300 mt-1">@iliminkimiyya</div>
-          </a>
-          <a href="https://www.youtube.com/@KimiyyarZahiri" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card">
-            <i data-lucide="youtube" class="text-red-400"></i>
-            <div class="font-bold mt-4">YouTube</div>
-            <div class="text-sm text-blue-300 mt-1">@KimiyyarZahiri</div>
-          </a>
-          <a href="https://www.tiktok.com/@kztechhub" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card">
-            <i data-lucide="music-2" class="text-pink-400"></i>
-            <div class="font-bold mt-4">TikTok</div>
-            <div class="text-sm text-blue-300 mt-1">@kztechhub</div>
-          </a>
-          <a href="https://t.me/c/2652077619/1" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card">
-            <i data-lucide="users" class="text-blue-400"></i>
-            <div class="font-bold mt-4">Telegram Community</div>
-            <div class="text-sm text-blue-300 mt-1">Join the learning community</div>
-          </a>
+          <a href="https://kimiyyarafrica.cv/" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card"><i data-lucide="file-text" class="text-gold-400"></i><div class="font-bold mt-4">Professional CV</div><div class="text-sm text-blue-300 mt-1">kimiyyarafrica.cv</div></a>
+          <a href="mailto:kzdiofficial@gmail.com" class="glass rounded-2xl p-5 card"><i data-lucide="mail" class="text-blue-400"></i><div class="font-bold mt-4">Official Email</div><div class="text-sm text-blue-300 mt-1">kzdiofficial@gmail.com</div></a>
+          <a href="https://x.com/iliminkimiyya" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card"><i data-lucide="twitter" class="text-sky-400"></i><div class="font-bold mt-4">X</div><div class="text-sm text-blue-300 mt-1">@iliminkimiyya</div></a>
+          <a href="https://www.youtube.com/@KimiyyarZahiri" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card"><i data-lucide="youtube" class="text-red-400"></i><div class="font-bold mt-4">YouTube</div><div class="text-sm text-blue-300 mt-1">@KimiyyarZahiri</div></a>
+          <a href="https://www.tiktok.com/@kztechhub" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card"><i data-lucide="music-2" class="text-pink-400"></i><div class="font-bold mt-4">TikTok</div><div class="text-sm text-blue-300 mt-1">@kztechhub</div></a>
+          <a href="https://t.me/c/2652077619/1" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-5 card"><i data-lucide="users" class="text-blue-400"></i><div class="font-bold mt-4">Telegram Community</div><div class="text-sm text-blue-300 mt-1">Join the learning community</div></a>
         </div>
-
-        <a href="https://t.me/kripto_Insights" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-7 btn-gold px-6 py-3.5 rounded-xl font-semibold">
-          Follow KZDI Insights on Telegram <span>↗</span>
-        </a>
+        <a href="https://t.me/kripto_Insights" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 mt-7 btn-gold px-6 py-3.5 rounded-xl font-semibold">Follow KZDI Insights on Telegram <span>↗</span></a>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="py-12 bg-[#0a0f1e]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between gap-8">
-        <div>
-          <div class="font-bold text-lg">Kimiyyar Zahiri Digital Intelligence</div>
-          <div class="text-xs text-blue-400 mt-1">KZDI • Practical digital intelligence for real-world impact.</div>
-        </div>
-        <div class="text-sm text-blue-400">
-          © 2026 KZDI. Built with purpose.
-        </div>
+        <div><div class="font-bold text-lg">Kimiyyar Zahiri Digital Intelligence</div><div class="text-xs text-blue-400 mt-1">KZDI • Practical digital intelligence for real-world impact.</div></div>
+        <div class="text-sm text-blue-400">© 2026 KZDI. Built with purpose.</div>
       </div>
-      <div class="border-t border-blue-400/10 mt-8 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-blue-500">
-        <span>Hausa • English • AI • Digital Intelligence</span>
-        <span class="font-arabic">بسم الله الرحمن الرحيم</span>
-      </div>
+      <div class="border-t border-blue-400/10 mt-8 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-blue-500"><span>Hausa • English • AI • Digital Intelligence</span><span class="font-arabic">بسم الله الرحمن الرحيم</span></div>
     </div>
   </footer>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Evidence image viewer">
+    <button id="lightboxClose" class="lightbox-close" aria-label="Close evidence viewer">×</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
 
   <script>
     lucide.createIcons();
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, {threshold:0.08, rootMargin:'0px 0px -30px 0px'});
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.style.boxShadow = window.scrollY > 60 ? '0 8px 35px rgba(0,0,0,.25)' : 'none';
     }, {passive:true});
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightboxImage.src = '';
+    };
+
+    document.querySelectorAll('[data-lightbox]').forEach(button => {
+      button.addEventListener('click', () => {
+        lightboxImage.src = button.dataset.lightbox;
+        lightboxImage.alt = button.querySelector('img')?.alt || 'Evidence image';
+        lightbox.classList.add('open');
+      });
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeLightbox();
+    });
   </script>
 </body>
 </html>
